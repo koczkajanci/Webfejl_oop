@@ -34,7 +34,7 @@ class Player {
         if (this.playedMatch <= 3) {
             return 'a'
         }
-        else if (this.playedMatch < 3 && this.playedMatch <= 5) {
+        else if (this.playedMatch <= 5) {
             return 'b'
         }
         else {
@@ -43,10 +43,39 @@ class Player {
     }
 }
 
+function printTierLevel(player){
+    console.log(player.nickname,player.getTierLevel())
+    
+}
+
 const gomszab = new Player("gomszab")
 
 console.log(gomszab)
 gomszab.play()
 console.log(gomszab.getTierLevel())
 
+
+gomszab.play()
+printTierLevel(gomszab)
+gomszab.play()
+printTierLevel(gomszab)
+gomszab.play()
+gomszab.play()
+printTierLevel(gomszab)
+/*
+function Person(name){
+    this.name = "Géza"
+}
+
+Person.prototype.getName = function(){
+    return this.name
+}
+
+function Student(name,school){
+    Person.call(this,name)
+    this.school = school
+}
+
+Object.setPrototypeOf(Student.prototype, Person.prototype)
+*/
 
