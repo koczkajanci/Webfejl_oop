@@ -79,3 +79,61 @@ function Student(name,school){
 Object.setPrototypeOf(Student.prototype, Person.prototype)
 */
 
+
+class Person{
+    constructor(name){
+        this.name = name
+
+    }
+
+    getName(){
+        return this.name
+    }
+
+
+}
+
+class Student extends Person {
+    constructor(name,school){
+        super(name)
+        this.school = school
+    }
+}
+
+const student = new Student("Körte","Almak iskolaja")
+console.log(student.getName)
+console.log(student.school)
+
+
+
+class Animal{
+    constructor(name){
+        this.name = name
+
+    }
+
+    Hangkiadas(){
+        console.log(`${this.name}-nak/nek csodás hangja van`)
+    }
+}
+
+class Bird extends Animal{
+    repülés(){
+        console.log(`${this.name} tud repülni.`)
+    }
+}
+
+class Mammal extends Animal{
+    sétálás(){
+        console.log(`${this.name} tud sétafikálni`)
+    }
+}
+
+
+const denever = new Bird("denevér")
+denever.Hangkiadas()
+denever.repülés()
+
+const kutya = new Mammal("Kutya")
+kutya.Hangkiadas()  
+kutya.sétálás()
