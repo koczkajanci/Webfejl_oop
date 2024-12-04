@@ -118,7 +118,7 @@ class Student extends Person {
 Teszteljuk a classokat illetve a getNameot
 */
 const student = new Student("Korte","Almak iskolaja")
-console.log(student.getName)
+console.log(student.getName())
 console.log(student.school)
 
 
