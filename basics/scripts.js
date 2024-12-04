@@ -18,8 +18,13 @@
 //         return 'c'
 //     }
 // }
-
-
+/* 
+Letrehozunk egy Player nevu osztalyt 
+A konstruktoraba megadunk 2 tulajdonsagot a nevet es a lejatszott meccseinek a szamat amely alapbol 0
+Ha a play metodust meghivjuk akkor a lejatszott meccseket noveljuk 1-el es kiirjuk az adatokat a consoleba
+A getTierLevel metodus ad nekunk egy szintet amelybe vagyunk a lejatszott meccseink alapjan 
+ha 0-ol 3ig van az ertek akkor A szintbe vagyunk ha 4 es 5 kozott akkor a B-be es a 6 es tobb lejatszott meccsek eseten a C szintbe sorol be minket a metodus
+*/
 class Player {
     constructor(nickname) {
         this.nickname = nickname
@@ -42,12 +47,15 @@ class Player {
         }
     }
 }
-
+/*
+A getTierLevelnek a visszateresi erteket a printTierLevel fuggvennyel kapjuk meg.
+Ehhez a player valtozora van szuksegunk bemeneti parameterkent, ami a Player konstruktornak egy peldanya
+*/
 function printTierLevel(player){
     console.log(player.nickname,player.getTierLevel())
     
 }
-
+//Ellenorizzuk a programunkat
 const gomszab = new Player("gomszab")
 
 console.log(gomszab)
@@ -79,6 +87,9 @@ function Student(name,school){
 Object.setPrototypeOf(Student.prototype, Person.prototype)
 */
 
+/*Egy osztaly amelynek a konstruktorjaba a nevet adjuk
+A getName metodus visszaadja a name erteket
+*/
 
 class Person{
     constructor(name){
@@ -92,7 +103,10 @@ class Person{
 
 
 }
-
+/*
+A Student class a Person osztalynak a leszarmazottja ezert hasznaljuk az extends-et
+A superrel tudjuk meghivni a Personnak a konstruktorat
+*/
 class Student extends Person {
     constructor(name,school){
         super(name)
@@ -100,12 +114,17 @@ class Student extends Person {
     }
 }
 
-const student = new Student("Körte","Almak iskolaja")
+/*
+Teszteljuk a classokat illetve a getNameot
+*/
+const student = new Student("Korte","Almak iskolaja")
 console.log(student.getName)
 console.log(student.school)
 
 
-
+/*
+Az Animal osztalynak egy name tulajdonsagot adunk meg illetve egy Hangkiadas metodust amely kiirja hogy az allatnak szep hangja van
+*/
 class Animal{
     constructor(name){
         this.name = name
@@ -117,23 +136,31 @@ class Animal{
     }
 }
 
+/*
+A Bird osztaly az Animal osztaly leszarmazottja amely az Animalon kivul meg repulni is tud ha meghivjuk a metodust
+*/
 class Bird extends Animal{
-    repülés(){
-        console.log(`${this.name} tud repülni.`)
+    repules(){
+        console.log(`${this.name} tud repulni.`)
     }
 }
-
+/*
+A Mammal is az Animal leszarmazottja aminek van egy setalas metodusa
+*/
 class Mammal extends Animal{
-    sétálás(){
-        console.log(`${this.name} tud sétafikálni`)
+    setalas(){
+        console.log(`${this.name} tud setafikálni`)
     }
 }
 
+/*
+Teszteles
+*/
 
-const denever = new Bird("denevér")
+const denever = new Bird("denever")
 denever.Hangkiadas()
-denever.repülés()
+denever.repules()
 
 const kutya = new Mammal("Kutya")
 kutya.Hangkiadas()  
-kutya.sétálás()
+kutya.setalas()
