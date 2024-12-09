@@ -44,7 +44,15 @@ document.getElementById('product').addEventListener('submit',function(e){
  * table render
  */
 function initTable(){
-
+    for(let i = 0; i < companionList.length; i++){
+        const celement = companionList[i]
+        const elem = new Companion(i,celement.firstName, celement.lastName, celement.area,celement.products)
+        factory.ManoAdd(elem)
+        for(const production of celement.products){
+            elem.productAdd(production)
+        }
+    }
+    console.log(factory)
     // TODO 6
 }
 

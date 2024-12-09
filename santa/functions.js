@@ -11,6 +11,13 @@ function createRow(companion){
 
    // TODO 7
 
+   const cell = createCell(tableRow)
+   tableRow.id = companion.id
+   cell.innerHTML = companion.getName()
+
+   const area =createCell(tableRow)
+   area.innerHTML = companion.reszleg
+
     const action = createCell(tableRow)
     const button = document.createElement('button');
     button.innerHTML = 'Megtekint';
@@ -78,6 +85,8 @@ function addCompanion(form){ //TODO
     const lastNameValue = lastname.value;
     const areaValue = area.value;
     // TODO 6
+
+    const 
 }
 
 /**
