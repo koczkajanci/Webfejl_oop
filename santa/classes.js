@@ -8,6 +8,10 @@ class Factory{
         this.manokList.push(mano)
         createRow(mano)
     }
+
+    createId(){
+        return this.manokList.length
+    }
 }
 
 class Companion{

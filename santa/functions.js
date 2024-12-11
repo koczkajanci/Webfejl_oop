@@ -85,8 +85,10 @@ function addCompanion(form){ //TODO
     const lastNameValue = lastname.value;
     const areaValue = area.value;
     // TODO 6
-
-    const 
+    const id = factory.createId()
+    const companion  = new Companion(id, firstNameValue, lastNameValue, areaValue)
+    factory.ManoAdd(companion)
+    
 }
 
 /**
