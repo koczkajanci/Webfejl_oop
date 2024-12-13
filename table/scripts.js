@@ -44,7 +44,7 @@ class Person{
         }
         firstn1.innerText = this.firstname1
         const lastn = document.createElement('td')
-        lastn.innerText = this.lastname
+        lastn.innerText = this.lastname 
         sor.appendChild(lastn)
         
 
