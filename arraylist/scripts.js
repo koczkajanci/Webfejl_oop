@@ -6,7 +6,7 @@ class ArrayLists{
     #obj
 
     get Count(){
-        this.#length
+        
 
         return this.#length
     }
@@ -31,8 +31,20 @@ class ArrayLists{
     }
     Clear(){
         //objektum uritése es length 0-zása
+        for(let i in this){
+            delete this[i];
+        }
         this.#obj = {};
         this.#length = 0;   
+    }
+
+    Contains(item){
+        for(let i = 0; i < this.#length; i++){
+            if(this.#obj[i] == item){
+                return true;
+            }
+        }
+        return false
     }
 
     
@@ -53,7 +65,8 @@ console.log(csirke);
 const alma =  {};
 Object.defineProperty(alma, "nev",{
     value: "Fezzo's pizzeria",
-    writable:true
+    writable:true,
+    enumerable: true, configurable:true
 })
 
 alma.nev = "asd";
