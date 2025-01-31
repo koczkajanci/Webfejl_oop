@@ -28,6 +28,7 @@ class DataManager{
     setUpdateCallback(callback)
     {
         this.#updateCallback = callback
+        this.#updateCallback(this.#array);
     }
 
      /**
@@ -86,23 +87,24 @@ class DataTable{
         //})
 
         unsigmadominik.setUpdateCallback((persons) => {
-            tbody = "";
+            tbody.innerHTML = "";
             for(const szempillaspiral of persons){
                 const tr = document.createElement('tr')
                 tbody.appendChild(tr)
-
-                const eletkortd = document.createElement('td')
-                eletkortd.innerHTML = szempillaspiral.nev
-                tr.appendChild(eletkortd)
 
                 const nevtd = document.createElement('td')
                 nevtd.innerHTML = szempillaspiral.nev
                 tr.appendChild(nevtd)
 
-
-
+                const eletkortd = document.createElement('td')
+                eletkortd.innerHTML = szempillaspiral.eletkor
+                tr.appendChild(eletkortd)
             }
         })
         
    }
 }
+
+
+const dataManager = new DataManager([{nev: "Dominik", eletkor: 17}, {nev: "Gömbszab", eletkor: 21}, {nev:"DrKörte", eletkor:70}])
+const dataTable = new DataTable(dataManager)
