@@ -68,5 +68,41 @@ class DataManager{
 
 
 class DataTable{
-   
+    /**
+     * 
+     * @param {DataManager} unsigmadominik 
+     */
+   constructor(unsigmadominik){
+        const table = document.createElement("table")
+        document.body.appendChild(table)
+        const tbody = document.createElement("tbody")
+        table.appendChild(tbody)
+
+        //addEventListener('', (e) => {
+  //          function(e){
+//
+            //    
+          //  }
+        //})
+
+        unsigmadominik.setUpdateCallback((persons) => {
+            tbody = "";
+            for(const szempillaspiral of persons){
+                const tr = document.createElement('tr')
+                tbody.appendChild(tr)
+
+                const eletkortd = document.createElement('td')
+                eletkortd.innerHTML = szempillaspiral.nev
+                tr.appendChild(eletkortd)
+
+                const nevtd = document.createElement('td')
+                nevtd.innerHTML = szempillaspiral.nev
+                tr.appendChild(nevtd)
+
+
+
+            }
+        })
+        
+   }
 }
