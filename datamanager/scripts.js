@@ -65,6 +65,16 @@ class DataManager{
         }   
         this.#updateCallback(result)
      }
+
+     filter(callback){
+        const result = [];
+        for(const bukarest of this.#array){
+        if(callback(bukarest)){
+                result.push(bukarest)
+            }
+        }   
+        this.#updateCallback(result)
+     }
 }
 
 
@@ -105,6 +115,27 @@ class DataTable{
    }
 }
 
-
 const dataManager = new DataManager([{nev: "Dominik", eletkor: 17}, {nev: "Gömbszab", eletkor: 21}, {nev:"DrKörte", eletkor:70}])
 const dataTable = new DataTable(dataManager)
+
+const szigma = document.createElement('input');
+szigma.type = "file"
+document.body.appendChild(szigma)
+
+szigma.addEventListener('change',(e) =>{
+   const file = e.currentTarget.files[0]
+   const freader = new FileReader
+   freader.readAsText(file)
+   freader.onload = () => {
+    const content =   freader.result
+    const contentRows = content.split("\n");
+    for(const row of contentRows){
+        const splitimiti = row.split(";");
+        const pers = {nev: splitimiti[0], eletkor: Number(splitimiti[1])};
+        dataManager.add(pers)
+    }
+   }
+})
+
+
+
