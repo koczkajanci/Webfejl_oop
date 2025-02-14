@@ -45,18 +45,56 @@ class Area{
 
 /**
  * letrehoz egy Details Teruletet a megadott css osztallyal
+ * @param {Mangarer} manager
  * @param {string} className
  */
 class DetailsArea extends Area{
-    constructor(className){
+    constructor(className, manager){
         super(className);
+        manager.setSelectCallback((student) => {
+            this.div.innerHTML = '';
+            const detailsContainer = document.createElement('div')
+            detailsContainer.innerHTML = student.comment
+            this.div.appendChild(detailsContainer);
+        })
     }
 }
 
 
-/**
- * Ez fogja tartalmazni a diakok listajat
- */
-class StudentsArea extends Area{
 
+class StudentsArea extends Area{
+    /**
+ * Ez fogja tartalmazni a diakok listajat
+ * @param {string} className a css osztaly
+ * @param {Mangarer} manager manager peldany
+*/
+    constructor(className,manager){
+        super(className)
+        manager.setAddCallback((student) => {
+            const studentCard = document.createElement('div');
+            studentCard.className = 'student-card';
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = student.name;
+            nameSpan.style.color = student.bad ? "red" : "black"
+            studentCard.appendChild(nameSpan);
+            
+            studentCard.appendChild(document.createElement('br'));
+
+            const averageSpan = document.createElement('span');
+            averageSpan.textContent = student.average;
+            
+            studentCard.appendChild(averageSpan);
+            this.div.appendChild(studentCard)
+            studentCard.addEventListener('click', (e) => {
+                const cardList = document.querySelectorAll('.student-card');
+                for(const card of cardList){
+                    card.className = 'student-card';
+                //mivel a selectednel a student card mellett lesz egy selected css class ezert ha az osszesnek megadjuk az eredeti class, a selectedes torlodik.
+                }
+                e.currentTarget.classList.add('selected')
+                manager.select(student)
+            })
+           
+        })
+    }
 }
