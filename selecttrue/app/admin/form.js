@@ -20,7 +20,7 @@ class FormController{
      */
     constructor(manager, fieldConfiguration){
         this.#formFieldArray = []
-        this.#manager
+        this.#manager = manager
         const form = document.createElement('form')
         document.body.appendChild(form)
         for(const field of fieldConfiguration){
@@ -35,6 +35,9 @@ class FormController{
             e.preventDefault();
             if(this.#validateFields()){
                 const value = this.#getValueObject();
+                const card = new Card(value.cardtex, value.right)
+                this.#manager.add(card)
+                e.target.reset();
             }
             //validaljuk a fieldeket, megjeenitjuk errorokat
             //elkerjuk a fieldek ertekeit    
@@ -62,7 +65,8 @@ class FormController{
     /**
      * Vegigmegy a formfieldeken es id-hoz
      * rendeli az ertekeket
-     * @returns {}
+     * @returns {{cardtext string, right: boolean}}
+     * a formfieldek ertekei
      */
     #getValueObject(){
         const result = {};
